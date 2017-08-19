@@ -937,12 +937,42 @@ function styleWidget(device) {
 		$("#td-" + device.PlanID + "-" + device.idx).html('<div class="progress"><div class="' + classTemp + '" role="progressbar" aria-valuenow="' + temp + '" aria-valuemin="4" aria-valuemax="50" style="width:' + temp + '%";>' + temp + "&deg;c" + '</div></div>');
 		break;
 	case "Temp + Humidity":
-		if (device.HumidityStatus == "Comfortable") {
-			labelClass = 'success';
-		} else {
-			labelClass = 'danger';
+		var classTemp;
+		var temp = parseFloat(device.Temp).toFixed(0);
+		if (temp <= 17) {
+			classTemp = "progress-bar progress-bar-warning";
 		}
-		$("#td-" + device.PlanID + "-" + device.idx).html('<span class="' + labelClass + '">' + device.Data + '</span>');
+		if (temp <= 15) {
+			classTemp = "progress-bar progress-bar-danger";
+		}
+		if (temp >= 17 && temp <= 25) {
+			classTemp = "progress-bar progress-bar-success";
+		}
+		if (temp >= 25 && temp <= 30) {
+			classTemp = "progress-bar progress-bar-warning";
+		}
+		if (temp >= 30 && temp <= 40) {
+			classTemp = "progress-bar progress-bar-danger";
+		}
+		if (temp >= 40 && temp <= 70) {
+			classTemp = "progress-bar progress-bar-success";
+		}
+		if (temp >= 70) {
+			classTemp = "progress-bar progress-bar-warning";
+		}
+		var classHumidity;
+		var Humidity = parseFloat(device.Humidity).toFixed(0);
+		if (Humidity <= 49) {
+			classHumidity = "progress-bar progress-bar-warning";
+		}
+		if (Humidity >= 50 && Humidity <= 90) {
+			classHumidity = "progress-bar progress-bar-success";
+		}
+		if (Humidity >= 90) {
+			classHumidity = "progress-bar progress-bar-danger";
+		}
+		$("#td-" + device.PlanID + "-" + device.idx).html('<div class="progress"><div class="' + classTemp + '" role="progressbar" aria-valuenow="' + temp + '" aria-valuemin="4" aria-valuemax="50" style="width:' + temp + '%";>' + temp + "&deg;c" + '</div></div>'+
+		    '<div class="progress"><div class="' + classHumidity + '" role="progressbar" aria-valuenow="' + Humidity + '" aria-valuemin="2" aria-valuemax="100" style="width:' + Humidity + '%";>' + Humidity + "%" + '</div></div>');
 		break;
 	case "Lux":
 		break;
