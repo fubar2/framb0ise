@@ -962,14 +962,14 @@ function styleWidget(device) {
 		}
 		var classHumidity;
 		var Humidity = parseFloat(device.Humidity).toFixed(0);
-		if (Humidity <= 49) {
+		if (Humidity <= 39) {
 			classHumidity = "progress-bar progress-bar-warning";
 		}
-		if (Humidity >= 50 && Humidity <= 90) {
+		if (Humidity >= 40 && Humidity <= 60) {
 			classHumidity = "progress-bar progress-bar-success";
 		}
-		if (Humidity >= 90) {
-			classHumidity = "progress-bar progress-bar-danger";
+		if (Humidity >= 61) {
+			classHumidity = "progress-bar progress-bar-warning";
 		}
 		$("#td-" + device.PlanID + "-" + device.idx).html('<div class="progress"><div class="' + classTemp + '" role="progressbar" aria-valuenow="' + temp + '" aria-valuemin="4" aria-valuemax="50" style="width:' + temp + '%";>' + temp + "&deg;c" + '</div></div>'+
 		    '<div class="progress"><div class="' + classHumidity + '" role="progressbar" aria-valuenow="' + Humidity + '" aria-valuemin="2" aria-valuemax="100" style="width:' + Humidity + '%";>' + Humidity + "%" + '</div></div>');
