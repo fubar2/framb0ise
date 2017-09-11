@@ -904,7 +904,11 @@ function styleWidget(device) {
 		break;
 	case "P1 Smart Meter":
 		if (device.SubType == "Energy") {
-			$('#td-' + device.PlanID + "-" + device.idx).html(device.Usage + ' (' + device.CounterToday + ')');
+			if (parseFloat(device.Usage) == 0 ) {
+				$('#td-' + device.PlanID + "-" + device.idx).html(' -' + device.UsageDeliv + ' (' + device.CounterToday + ')');
+			} else {
+				$('#td-' + device.PlanID + "-" + device.idx).html(device.Usage + ' (' + device.CounterToday + ')');
+			}
 		}
 		if (device.SubType == "Gas") {
 			$('#td-' + device.PlanID + "-" + device.idx).html(device.CounterToday);
