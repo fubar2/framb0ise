@@ -136,6 +136,7 @@ function saveSettings() {
 
 	var domoticzUrl = $("#domoticzUrl").val();
 	jsonvar = saveSettingVar('domoticzUrl', domoticzUrl, jsonvar);
+	loadsettingsfromdomoticz();
 	initializeDomoticzRooms()
 
 	var icsUrl = $("#icsUrl").val();
