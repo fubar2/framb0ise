@@ -298,8 +298,8 @@ function updateANWB() {
 function updateCustom(){
 
 var customUrl=localStorage.customUrl;
-
-var html = '<tr><td><img src="' + customUrl + '" width="100%"></iframe></td></tr>';
+var time = event.start_time;
+var html = '<tr><td><img src="' + customUrl + '?' + time + '" width="100%"></iframe></td></tr>';
 
 $("#room-custom").html(html);
 
